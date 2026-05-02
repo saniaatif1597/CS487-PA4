@@ -1,0 +1,30 @@
+name: Deploy Web App to Azure
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+          
+      - name: npm install and build
+        working-directory: webapp
+        run: |
+          npm install
+          
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: 'pa4-24030009'
+          slot-name: 'Production'
+          package: ./webapp

@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_WEBAPP_PACKAGE_PATH: './webapp'   # <-- THIS IS THE TA'S FIX
+  AZURE_WEBAPP_PACKAGE_PATH: './webapp'   
 
 jobs:
   build:

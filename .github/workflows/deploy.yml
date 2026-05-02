@@ -28,9 +28,10 @@ jobs:
           node-version: '22.x'
           
       - name: npm install and build
-        working-directory: webapp
         run: |
+          cd webapp
           npm install
+          cd ..
           
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
